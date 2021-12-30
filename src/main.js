@@ -3,9 +3,23 @@
 // agregarle un evento a ese bloque para cuando sea clickeado
 // repetir el proceso
 window.onload  = async () => {
-    const index = 'file:///E:/visual/html,%20js/colores/index/index.html'
-    const colores = ["#BA1EFA","#19CC01","#C23D2F" ];
-    const choises = ["#B41DF0", "#119400", "#943024"];
+    const CONFIG = {
+        "easy": {
+            "colors": ["#BA1EFA","#19CC01","#C23D2F" ],
+            "choices": ["#B41DF0", "#119400", "#943024"]
+        },
+        "normal": {
+            "colors": ["#F5C21B","#2B0DFA","#14F51F" ],
+            "choices": ["#DEC20D", "#0F6FFF", "#5EFF08"]
+        },
+        "hard": {
+            "colors": ["#FF4E00","#FF5294","#4EF5D6" ],
+            "choices": ["#F54900", "#F54F8E", "#52FFDF"]
+        }
+    }
+    const index = '../index.html'
+    const colores = CONFIG[document.title.toLowerCase()].colors;
+    const choices = CONFIG[document.title.toLowerCase()].choices;
     const BLOCKS = document.querySelectorAll('.block');
     const BLOCKSARR = Array.from(BLOCKS);
 
@@ -17,7 +31,7 @@ window.onload  = async () => {
         for(let b in BLOCKSARR){
             BLOCKSARR[b].style.background = colores[L] ;
         };
-        BLOCKSARR[Selected].style.background = choises[L];
+        BLOCKSARR[Selected].style.background = choices[L];
     };
 
     const Game = async (L) =>{
